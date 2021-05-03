@@ -3,10 +3,10 @@
 ### Steps to execute:
 
 In the Breadcrumb project directory, run
-### `npm install`
+## `npm install`
 
 and then, 
 
-### `npm start`
+## `npm start`
 
-Now on you browser visit the link http://localhost:5000
+Now in you browser visit the link http://localhost:5000
