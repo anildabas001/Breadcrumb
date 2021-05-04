@@ -26,8 +26,10 @@ function App() {
   }
 
   const dirClickHandler = (event, clickedElement) => {
-    breadcrumbData.push(clickedElement);
-    updateBreadcrumb([...breadcrumbData]);
+    if (!breadcrumbData.includes(clickedElement)) {        
+      breadcrumbData.push(clickedElement);
+      updateBreadcrumb([...breadcrumbData]);
+    } 
   }
 
   let element = data  && data.type === 'dir'? <Directory clickHandler={dirClickHandler} dirName={breadcrumbData[breadcrumbData.length - 1]} dirData ={data.children} />: null;
