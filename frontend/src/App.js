@@ -8,6 +8,7 @@ function App() {
   const [data, updateData] = useState(null);
   const [breadcrumbData, updateBreadcrumb] = useState(['home']);
   const BreadcrumbRef = useRef(null);
+  const prevClickedElement = useRef(null);
 
   useEffect(() => {
     if (BreadcrumbRef.current !== breadcrumbData) {
@@ -25,11 +26,13 @@ function App() {
     updateBreadcrumb([...breadcrumbData]);
   }
 
-  const dirClickHandler = (event, clickedElement) => {
-    if (!breadcrumbData.includes(clickedElement)) {        
+  
+  const dirClickHandler = (event, clickedElement) => {   
+    if (prevClickedElement.current !== event.target) {        
       breadcrumbData.push(clickedElement);
       updateBreadcrumb([...breadcrumbData]);
-    } 
+      prevClickedElement.current = event.target;
+    }         
   }
 
   let element = data  && data.type === 'dir'? <Directory clickHandler={dirClickHandler} dirName={breadcrumbData[breadcrumbData.length - 1]} dirData ={data.children} />: null;
